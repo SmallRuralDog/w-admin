@@ -15,6 +15,16 @@
   bottom: 0;
 }
 
+.menu_footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
 .container {
   margin-left: 100px;
   min-height: 100vh;
@@ -35,6 +45,9 @@
 .second_sidebar {
   display: flex;
   flex-direction: column;
+  align-items: stretch;
+  justify-content: baseline;
+  height: 100%;
 }
 
 .second_sidebar_title {
@@ -50,7 +63,7 @@
 }
 
 .second_sidebar_menu {
-  height: 100%;
+  flex: 1;
 }
 
 .content {
