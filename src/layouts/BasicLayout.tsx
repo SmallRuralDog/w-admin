@@ -89,7 +89,7 @@ class BasicLayout extends React.Component {
                             123
                         </Content>
                         <Footer tagName='footer' style={{ textAlign: 'center' }}>
-                            Ant Design ©2018 Created by Ant UED
+                            Ant Design ©2019 Created by W-ADMIN
                         </Footer>
                     </Layout>
                 </Layout>
