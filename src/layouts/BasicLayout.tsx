@@ -99,7 +99,7 @@ class BasicLayout extends React.Component {
                     <Layout tagName='section'>
                         <Header tagName='header' className={styles.header}>移动店铺</Header>
                         <Content tagName='main' className={styles.content}>
-                            <div>Content</div>
+                            <div>{this.props.children}</div>
                         </Content>
                         <Footer tagName='footer' style={{ textAlign: 'center' }}>
                             Ant Design ©2019 Created by W-ADMIN

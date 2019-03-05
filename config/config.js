@@ -1,40 +1,26 @@
-// ref: https://umijs.org/config/
-import pageRoutes from './router.config';
+import pageRoutes from './router.config.ts';
 import defaultSettings from '../src/defaultSettings';
+import slash from 'slash2';
 
 
 const {
-  pwa,
   primaryColor
 } = defaultSettings;
 const {
-  NODE_ENV,
   APP_TYPE,
-  TEST
 } = process.env;
 const plugins = [
-  // ref: https://umijs.org/plugin/umi-plugin-react.html
   ['umi-plugin-react', {
     antd: true,
-    dva: true,
-    dynamicImport: false,
-    title: 'w-admin',
-    dll: false,
-
-    routes: {
-      exclude: [
-        /models\//,
-        /services\//,
-        /model\.(t|j)sx?$/,
-        /service\.(t|j)sx?$/,
-        /components\//,
-      ],
+    dva: {
+      hmr: true
     },
+    dynamicImport: true
   }],
 ]
 
 export default {
-  plugins,
+  plugins: plugins,
   define: {
     APP_TYPE: APP_TYPE || '',
   },
@@ -52,6 +38,27 @@ export default {
     javascriptEnabled: true,
   },
   disableRedirectHoist: true,
+  cssLoaderOptions: {
+    modules: true,
+    getLocalIdent: (context, localIdentName, localName) => {
+      if (
+        context.resourcePath.includes('node_modules') ||
+        context.resourcePath.includes('global.less')
+      ) {
+        return localName;
+      }
+      const match = context.resourcePath.match(/src(.*)/);
+      if (match && match[1]) {
+        const antdProPath = match[1].replace('.less', '');
+        const arr = slash(antdProPath)
+          .split('/')
+          .map(a => a.replace(/([A-Z])/g, '-$1'))
+          .map(a => a.toLowerCase());
+        return `antd-pro${arr.join('-')}-${localName}`.replace(/--/g, '-');
+      }
+      return localName;
+    },
+  },
   manifest: {
     basePath: '/',
   },
