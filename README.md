@@ -1,7 +1,7 @@
 # W-ADMIN
->一个简单易用的中后台，基于 umijs + antd + dva
+>一个简单易用的中后台，基于typescript + umijs + antd + dva
 
-[在线 DEMO](https://w-admin-98rl9zh7k.now.sh/)
+[在线 DEMO](https://w-admin-hamn97yhl.now.sh/)
 
 ## 安装
 ```
