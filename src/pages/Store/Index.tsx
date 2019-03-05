@@ -1,7 +1,9 @@
 import React from 'react';
-
+import ContentPage from '@/components/ContentPage'
 class StoreIndex extends React.Component {
     render() {
-        return <div>123</div>
+        return <ContentPage>
+            123123
+        </ContentPage>
     }
-}export default StoreIndex;
+} export default StoreIndex;
